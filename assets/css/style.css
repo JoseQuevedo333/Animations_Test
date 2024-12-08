@@ -1,0 +1,230 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "sidebar"
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: auto;
+  grid-template-rows: auto auto 1fr auto;
+  height: 100vh;
+}
+
+@media (min-width: 1023px) {
+  .grid-container {
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "footer main";
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+  }
+
+  .nav-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0;
+    width: 250px;
+  }
+
+  .main {
+    overflow: auto;
+  }
+
+  nav {
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+  }
+
+  input {
+    width: 90%;
+  }
+
+  .products {
+    justify-content: space-around;
+  }
+
+  footer {
+    align-items: center;
+  }
+}
+
+header {
+  grid-area: header;
+  text-align: center;
+  height: 100%;
+  background-color: #c7aa74;
+  transition: 2000ms ease-in-out;
+  animation: ChangeColors 550ms infinite;
+}
+
+header:hover {
+  font-size: 50px;
+}
+
+nav {
+  grid-area: sidebar;
+  background-color: #e9b872;
+  color: white;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-style {
+  display: flex;
+  gap: 20px;
+  padding-left: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.nav-transformer {
+  background-color: #8b2635;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  height: auto;
+  transition: all 300ms ease-out;
+  animation: pulse 2s infinite;
+}
+
+.shadow:hover {
+  transform: translateX(15px);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #a93f55, 0 0 20px #a93f55;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff9fb2, 0 0 20px #ff9fb2;
+  }
+}
+
+nav li {
+  list-style: none;
+  padding: 30px;
+}
+
+li a {
+  font-size: 60px;
+  color: black;
+}
+
+li a:hover {
+  background-color: #c7aa74;
+  color: white;
+  transform: translateY(-2px);
+}
+
+main {
+  grid-area: main;
+  text-align: center;
+  padding: 60px;
+  background-image: url("../img/Doggy_bones_background.avif");
+  background-size: 45%;
+  background-position: right;
+  background-attachment: fixed;
+  height: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: auto;
+  border: 4px solid #16262e;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Cambria;
+  text-align: center;
+  background-color: #957964;
+  opacity: 95%;
+  position: relative;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  transition: all 1000ms ease-in-out;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.card img {
+  padding-top: 10px;
+  width: 90%;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.card:hover {
+  margin: 100px;
+  transform: rotate(360deg) scale(1.5);
+  animation-name: colorear;
+  animation-duration: 2s;
+  z-index: 10;
+}
+
+.card:hover .card-descript {
+  visibility: visible;
+}
+
+@keyframes colorear {
+  from {
+    background-color: #957964;
+  }
+  to {
+    background-color: #993955;
+  }
+}
+
+.card-descript {
+  visibility: hidden;
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-evenly;
+  text-align: center;
+  background-color: lightgray;
+  height: 265px;
+}
+
+footer p {
+  font-size: 25px;
+}
+
+@keyframes ChangeColors {
+  0% {
+    background-color: #993955;
+  }
+  25% {
+    background-color: #ff9fb2;
+  }
+  50% {
+    background-color: #c7aa74;
+  }
+  75% {
+    background-color: #957964;
+  }
+  100% {
+    background-color: #993955;
+  }
+}
